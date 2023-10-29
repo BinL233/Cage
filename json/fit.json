@@ -23,15 +23,15 @@
                         "chr16", "chr17", "chr18", "chr19"],
     "validation_chroms": ["chr2", "chr3", "chr4"],
 
-    "sequences":"../Data/bpNet_ex/mm10.chr19.fa.gz",
-    "loci":"../Data/bpNet_ex/chip-nexus/Oct4/idr-optimal-set.summit.bed.gz",
+    "sequences":"../../Data/bpNet_ex/mm10.chr19.fa.gz",
+    "loci":"../../Data/bpNet_ex/chip-nexus/Oct4/idr-optimal-set.summit.bed.gz",
     "signals":[
-       "../Data/bpNet_ex/chip-nexus/Oct4/counts.pos.bw",
-       "../Data/bpNet_ex/chip-nexus/Oct4/counts.neg.bw"
+       "../../Data/bpNet_ex/chip-nexus/Oct4/counts.pos.bw",
+       "../../Data/bpNet_ex/chip-nexus/Oct4/counts.neg.bw"
     ],
     "controls":[
-        "../Data/bpNet_ex/chip-nexus/patchcap/counts.pos.bw",
-        "../Data/bpNet_ex/chip-nexus/patchcap/counts.neg.bw"
+        "../../Data/bpNet_ex/chip-nexus/patchcap/counts.pos.bw",
+        "../../Data/bpNet_ex/chip-nexus/patchcap/counts.neg.bw"
      ],
     "random_state": 0
  }

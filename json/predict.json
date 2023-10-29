@@ -7,7 +7,7 @@
     "model":"example.torch",
 
     "sequences":"Data/hg38.fa",
-    "loci":"Data/examples/ENCSR000AKO.bed",
+    "loci":"../../Data/bpNet_ex/chip-nexus/Oct4/idr-optimal-set.summit.bed.gz",
     "controls": null,
 
     "profile_filename": "y_profile.npz",
