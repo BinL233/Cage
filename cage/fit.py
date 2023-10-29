@@ -1,10 +1,13 @@
 import torch
-from .bpnet_customize.io_ import PeakGenerator
-from .bpnet_customize.io_ import extract_loci
-from .bpnet_customize.bpnet import BPNet
+import os
+import sys
 import cnn
 import numpy as np
 import merge
+
+from bpnet_customize.io_ import PeakGenerator
+from bpnet_customize.io_ import extract_loci
+from bpnet_customize.bpnet import BPNet
 
 default_fit_parameters = {
     'n_filters': 64,
