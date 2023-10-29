@@ -394,7 +394,7 @@ def extract_loci(loci, sequences, signals=None, controls=None, chroms=None,
 				if isinstance(control, dict):
 					control_ = control[chrom][start:end]
 				else:
-					control_ = control.values(chrom, start, end, numpy=True)
+					control_ = control.values(chrom, start, end)#, numpy=True)
 					control_ = numpy.nan_to_num(control_)
 
 				controls_[-1].append(control_)

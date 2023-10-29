@@ -60,8 +60,6 @@ training_data = PeakGenerator(
     verbose=fit_para['verbose']
 )
 
-# training_data = cnn.getInput("Data/hg38.fa")
-
 valid_data = extract_loci(
     sequences=fit_para['sequences'],
     signals=fit_para['signals'],
