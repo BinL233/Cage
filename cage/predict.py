@@ -2,7 +2,6 @@ import torch
 from bpnet_customize.io_ import PeakGenerator
 from bpnet_customize.io_ import extract_loci
 from bpnet_customize.bpnet import BPNet
-import cnn
 import numpy as np
 import merge
 

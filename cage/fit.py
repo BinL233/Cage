@@ -1,7 +1,4 @@
 import torch
-import os
-import sys
-import cnn
 import numpy as np
 import merge
 
