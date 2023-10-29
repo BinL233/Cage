@@ -1,0 +1,15 @@
+{
+    "batch_size":64,
+    "in_window":2114,
+    "out_window":1000,
+    "verbose":true,
+    "chroms":["chr5","chr6","chr7", "chrX", "chrY"],
+    "model":"example.torch",
+
+    "sequences":"Data/hg38.fa",
+    "loci":"Data/examples/ENCSR000AKO.bed",
+    "controls": null,
+
+    "profile_filename": "y_profile.npz",
+    "counts_filename": "y_counts.npz"
+ }
