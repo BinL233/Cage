@@ -245,8 +245,8 @@ class BPNet(torch.nn.Module):
 
 			y_profiles, y_counts = [], []
 			for start, end in tqdm(zip(starts, ends), disable=not verbose):
-				X_batch = X[start:end].cuda()
-				X_ctl_batch = None if X_ctl is None else X_ctl[start:end].cuda()
+				X_batch = X[start:end]#.cuda()
+				X_ctl_batch = None if X_ctl is None else X_ctl[start:end]#.cuda()
 
 				y_profiles_, y_counts_ = self(X_batch, X_ctl_batch)
 				y_profiles_ = y_profiles_.cpu()
@@ -323,11 +323,11 @@ class BPNet(torch.nn.Module):
 		"""
 
 		if X_valid is not None:
-			X_valid = X_valid.cuda()
+			X_valid = X_valid#.cuda()
 			y_valid_counts = y_valid.sum(dim=2)
 
 		if X_ctl_valid is not None:
-			X_ctl_valid = X_ctl_valid.cuda()
+			X_ctl_valid = X_ctl_valid#.cuda()
 
 
 		iteration = 0
@@ -341,10 +341,10 @@ class BPNet(torch.nn.Module):
 			for data in training_data:
 				if len(data) == 3:
 					X, X_ctl, y = data
-					X, X_ctl, y = X.cuda(), X_ctl.cuda(), y.cuda()
+					X, X_ctl, y = X, X_ctl, y #X.cuda(), X_ctl.cuda(), y.cuda()
 				else:
 					X, y = data
-					X, y = X.cuda(), y.cuda()
+					X, y = X, y #X.cuda(), y.cuda()
 					X_ctl = None
 
 				# Clear the optimizer and set the model to training mode

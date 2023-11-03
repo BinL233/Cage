@@ -91,7 +91,7 @@ model = BPNet(n_filters=fit_para['n_filters'],
     alpha=fit_para['alpha'],
     trimming=trimming,
     name=fit_para['name'],
-    verbose=fit_para['verbose']).cuda()
+    verbose=fit_para['verbose'])#.cuda()
 
 optimizer = torch.optim.AdamW(model.parameters(), lr=fit_para['lr'])
 
