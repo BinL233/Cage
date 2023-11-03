@@ -373,8 +373,7 @@ def extract_loci(loci, sequences, signals=None, controls=None, chroms=None,
 					signal_ = signal[chrom][start:end]
 				else:
 					try:
-						print(signal.chroms(chrom))
-						signal_ = signal.values(chrom, start, end, numpy=True)
+						signal_ = signal.values(chrom, start, end)#, numpy=True)
 					except:
 						print(f"Warning: {chrom} {start} {end} not " +
 							"valid bigwig indexes. Using zeros instead.")
