@@ -15,8 +15,8 @@
     "alpha": 1,
     "verbose": true,
 
-    "min_counts": 0,
-    "max_counts": 99999999,
+    "min_counts": null,
+    "max_counts": null,
 
     "training_chroms": ["chr2"],
    "validation_chroms": ["chr8"],

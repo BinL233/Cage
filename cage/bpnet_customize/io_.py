@@ -373,6 +373,7 @@ def extract_loci(loci, sequences, signals=None, controls=None, chroms=None,
 					signal_ = signal[chrom][start:end]
 				else:
 					try:
+						print(signal.chroms(chrom))
 						signal_ = signal.values(chrom, start, end, numpy=True)
 					except:
 						print(f"Warning: {chrom} {start} {end} not " +
@@ -519,7 +520,7 @@ def PeakGenerator(loci, sequences, signals, controls=None, chroms=None,
 	X: torch.utils.data.DataLoader
 		A PyTorch DataLoader wrapped DataGenerator object.
 	"""
-
+	
 	X = extract_loci(loci=loci, sequences=sequences, signals=signals, 
 		controls=controls, chroms=chroms, in_window=in_window, 
 		out_window=out_window, max_jitter=max_jitter, min_counts=min_counts,
