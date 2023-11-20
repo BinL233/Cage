@@ -18,29 +18,30 @@
     "min_counts": null,
     "max_counts": null,
 
-    "training_chroms2": ["chr2"],
-   "validation_chroms2": ["chr8"],
+    "training_chroms": ["chr1", "chr2", "chr3", "chr4", "chr5",  "chr6", "chr7", "chr8", "chr9",
+                        "chr11", "chr12", "chr13", "chr14", "chr16",  "chr17", "chr18",  "chr19",
+                        "chrX", "chrY"],
+   "validation_chroms": ["chr10", "chr15"],
 
-   "sequences2":"../../Data/bpNetlite_ex/hg38.fa",
-   "loci2":"../../Data/bpNetlite_ex/ENCSR000AKO.bed",
-   "signals2":[
-   "../../Data/bpNetlite_ex/ENCSR000AKO_minus.bigWig",
-   "../../Data/bpNetlite_ex/ENCSR000AKO_plus.bigWig"
+   "sequences":"../../Data/bpNetlite_ex/hg38.fa",
+   "loci":"../../Data/ENCFF544LXB/K562/ENCFF544LXB.bed.gz",
+   "signals":[
+   "../../Data/ENCFF544LXB/K562/ENCFF465GBD.bigWig"
    ],
-   "controls2":[],
+   "controls":null,
 
-    "training_chroms": ["chr5","chr6","chr7", "chrX", "chrY", "chr10", 
+    "training_chroms2": ["chr5","chr6","chr7", "chrX", "chrY", "chr10", 
                         "chr11", "chr12", "chr13", "chr14", "chr15", 
                         "chr16", "chr17", "chr18", "chr19"],
-    "validation_chroms": ["chr2", "chr3", "chr4"],
+    "validation_chroms2": ["chr2", "chr3", "chr4"],
 
-    "sequences":"../../Data/bpNet_ex/mm10.fa",
-    "loci":"../../Data/bpNet_ex/chip-nexus/Oct4/idr-optimal-set.summit.bed.gz",
-    "signals":[
+    "sequences2":"../../Data/bpNet_ex/mm10.fa",
+    "loci2":"../../Data/bpNet_ex/chip-nexus/Oct4/idr-optimal-set.summit.bed.gz",
+    "signals2":[
        "../../Data/bpNet_ex/chip-nexus/Oct4/counts.pos.bw",
        "../../Data/bpNet_ex/chip-nexus/Oct4/counts.neg.bw"
     ],
-    "controls":[
+    "controls2":[
         "../../Data/bpNet_ex/chip-nexus/patchcap/counts.pos.bw",
         "../../Data/bpNet_ex/chip-nexus/patchcap/counts.neg.bw"
      ],
