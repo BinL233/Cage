@@ -22,10 +22,10 @@ default_predict_parameters = {
     'counts_filename': 'y_counts.npz'
 }
 
-predict_para = merge.merge_parameters("../../json/predict.json", default_predict_parameters)
+predict_para = merge.merge_parameters("../json/predict.json", default_predict_parameters)
 
 # Predict
-model = torch.load(predict_para['model'])#.cuda()
+model = torch.load(predict_para['model']).cuda()
 
 examples = extract_loci(
     sequences=predict_para['sequences'],
