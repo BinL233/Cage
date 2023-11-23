@@ -206,7 +206,7 @@ class BPNet(torch.nn.Module):
 		return y_profile, y_counts
 
 
-	def predict(self, X, X_ctl=None, batch_size=64, verbose=False):
+	def predict(self, X, X_ctl=None, valid_data=None, batch_size=64, verbose=False):
 		"""Make predictions for a large number of examples.
 
 		This method will make predictions for a number of examples that exceed
@@ -259,7 +259,7 @@ class BPNet(torch.nn.Module):
 
 				# Test performance
 				measures = calculate_performance_measures(y_profiles_, 
-				X_ctl, y_counts_, kernel_sigma=7, 
+				valid_data, y_counts_, kernel_sigma=7, 
 				kernel_width=81, measures=['profile_mnll', 
 				'profile_pearson', 'count_pearson', 'count_mse'])
 

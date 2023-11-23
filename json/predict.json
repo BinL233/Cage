@@ -6,10 +6,12 @@
     "chroms":["chr15"],
     "model":"cage/example.torch",
 
-    "sequences":"Data/hg38.fa",
+    "validation_chroms": ["chr15"],
+    "sequences":"../../Data/bpNetlite_ex/hg38.fa",
     "loci":"../../Data/bpNet_ex/chip-nexus/Oct4/idr-optimal-set.summit.bed.gz",
+    "signals":["../../Data/ENCFF544LXB/K562/ENCFF465GBD.bigWig"],
     "controls": null,
 
-    "profile_filename": "output/y_profile.npz",
-    "counts_filename": "output/y_counts.npz"
+    "profile_filename": "y_profile.npz",
+    "counts_filename": "y_counts.npz"
  }
