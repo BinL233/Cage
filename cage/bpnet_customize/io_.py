@@ -423,8 +423,6 @@ def extract_loci(loci, sequences, signals=None, controls=None, chroms=None,
 		if controls is not None:
 			controls_ = torch.tensor(numpy.array(controls_), dtype=torch.float32)
 			return seqs[idxs], signals_[idxs], controls_[idxs]
-		
-		print(type(seqs[idxs]))
 
 		return seqs[idxs], signals_[idxs]
 	else:
@@ -432,7 +430,6 @@ def extract_loci(loci, sequences, signals=None, controls=None, chroms=None,
 			controls_ = torch.tensor(numpy.array(controls_), dtype=torch.float32)
 			return seqs, controls_
 
-		print(type(seqs[idxs]))
 		return seqs			
 
 
