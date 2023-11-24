@@ -267,6 +267,8 @@ class BPNet(torch.nn.Module):
 			y_counts = torch.cat(y_counts)
 
 			# Test performance
+			self.logger.start()
+			
 			self.eval()
 			
 			z = y_profiles.shape
