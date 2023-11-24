@@ -430,7 +430,7 @@ def extract_loci(loci, sequences, signals=None, controls=None, chroms=None,
 			controls_ = torch.tensor(numpy.array(controls_), dtype=torch.float32)
 			return seqs, controls_
 
-		return seqs			
+		return seqs
 
 
 def PeakGenerator(loci, sequences, signals, controls=None, chroms=None, 

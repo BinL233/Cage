@@ -28,10 +28,19 @@ predict_para = merge.merge_parameters("../json/predict.json", default_predict_pa
 model = torch.load(predict_para['model']).cuda()
 
 examples = extract_loci(
+    # sequences=predict_para['sequences'],
+    # controls=predict_para['controls'],
+    # loci=predict_para['loci'],
+    # chroms=predict_para['chroms'],
+    # max_jitter=0,
+    # verbose=predict_para['verbose']
     sequences=predict_para['sequences'],
+    signals=predict_para['signals'],
     controls=predict_para['controls'],
     loci=predict_para['loci'],
     chroms=predict_para['chroms'],
+    in_window=predict_para['in_window'],
+    out_window=predict_para['out_window'],
     max_jitter=0,
     verbose=predict_para['verbose']
 )
