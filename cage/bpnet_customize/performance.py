@@ -112,8 +112,7 @@ def batched_smoothed_function(logps, true_counts, f, smooth_predictions=False,
 
         if smooth_true:
             true_counts_ = smooth_gaussian1d(true_counts_, kernel_sigma, kernel_width)
-
-        print(len(logps_), len(true_counts_))
+            
         results[start:end] = f(logps_, true_counts_) 
 
     return results
