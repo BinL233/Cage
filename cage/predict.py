@@ -57,8 +57,8 @@ if predict_para['controls'] == None:
 else:
     X, X_ctl = examples
 
-y_profiles, y_counts = model.predict(X, X_ctl=X_ctl, valid_data,
-    batch_size=predict_para['batch_size'])
+y_profiles, y_counts = model.predict(X, X_ctl=X_ctl, valid_data=valid_data,
+                                      batch_size=predict_para['batch_size'])
 
 np.savez_compressed(predict_para['profile_filename'], y_profiles)
 np.savez_compressed(predict_para['counts_filename'], y_counts)

@@ -257,30 +257,31 @@ class BPNet(torch.nn.Module):
 				y_profiles.append(y_profiles_)
 				y_counts.append(y_counts_)
 
-				# Test performance
-				measures = calculate_performance_measures(y_profiles_, 
-				valid_data, y_counts_, kernel_sigma=7, 
-				kernel_width=81, measures=['profile_mnll', 
-				'profile_pearson', 'count_pearson', 'count_mse'])
-
-				profile_corr = measures['profile_pearson']
-				count_corr = measures['count_pearson']
-				
-				valid_loss = measures['profile_mnll'].mean()
-				valid_loss += self.alpha * measures['count_mse'].mean()
-				valid_time = time.time() - tic
-
-				self.logger.add([valid_time,
-					measures['profile_mnll'].mean().item(), 
-					numpy.nan_to_num(profile_corr).mean(),
-					numpy.nan_to_num(count_corr).mean(), 
-					measures['count_mse'].mean().item(),
-					(valid_loss < best_loss).item()])
-
-				self.logger.save("example_test.log")#.format(self.name))
-
 			y_profiles = torch.cat(y_profiles)
 			y_counts = torch.cat(y_counts)
+
+			# Test performance
+			measures = calculate_performance_measures(y_profiles, 
+			valid_data, y_counts, kernel_sigma=7, 
+			kernel_width=81, measures=['profile_mnll', 
+			'profile_pearson', 'count_pearson', 'count_mse'])
+
+			profile_corr = measures['profile_pearson']
+			count_corr = measures['count_pearson']
+			
+			valid_loss = measures['profile_mnll'].mean()
+			valid_loss += self.alpha * measures['count_mse'].mean()
+			valid_time = time.time() - tic
+
+			self.logger.add([valid_time,
+				measures['profile_mnll'].mean().item(), 
+				numpy.nan_to_num(profile_corr).mean(),
+				numpy.nan_to_num(count_corr).mean(), 
+				measures['count_mse'].mean().item(),
+				(valid_loss < best_loss).item()])
+
+			self.logger.save("example_test.log")#.format(self.name))
+
 			return y_profiles, y_counts
 
 	def fit(self, training_data, optimizer, X_valid=None, X_ctl_valid=None, 
