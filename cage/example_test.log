@@ -1,0 +1,2 @@
+Epoch	Iteration	Training Time	Validation Time	Training MNLL	Training Count MSE	Validation MNLL	Validation Profile Pearson	Validation Count Pearson	Validation Count MSE	Saved?
+			0.45400285720825195			591.868896484375	0.21708056330680847	0.6876446604728699	23.872291564941406	True
