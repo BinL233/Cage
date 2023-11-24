@@ -71,7 +71,7 @@ valid_data = extract_loci(
     max_jitter=0,
     verbose=fit_para['verbose']
 )
-print(type(valid_data))
+
 if fit_para['controls'] is not None:
     valid_sequences, valid_signals, valid_controls = valid_data
     n_control_tracks = 2

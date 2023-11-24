@@ -6,7 +6,6 @@
     "chroms":["chr15"],
     "model":"example.torch",
 
-    "validation_chroms": ["chr10"],
     "sequences":"../../Data/bpNetlite_ex/hg38.fa",
     "loci":"../../Data/bpNet_ex/chip-nexus/Oct4/idr-optimal-set.summit.bed.gz",
     "signals":["../../Data/ENCFF544LXB/K562/ENCFF465GBD.bigWig"],
