@@ -261,6 +261,12 @@ class BPNet(torch.nn.Module):
 			y_counts = torch.cat(y_counts)
 
 			# Test performance
+
+			z = y_profiles.shape
+			y_profiles = y_profiles.reshape(y_profiles.shape[0], -1)
+			y_profiles = torch.nn.functional.log_softmax(y_profiles, dim=-1)
+			y_profiles = y_profiles.reshape(*z)
+			
 			measures = calculate_performance_measures(y_profiles, 
 			valid_data, y_counts, kernel_sigma=7, 
 			kernel_width=81, measures=['profile_mnll', 
