@@ -36,17 +36,17 @@ examples = extract_loci(
     verbose=predict_para['verbose']
 )
 
-valid_data = extract_loci(
-    sequences=predict_para['sequences'],
-    signals=predict_para['signals'],
-    controls=predict_para['controls'],
-    loci=predict_para['loci'],
-    chroms=predict_para['chroms'],
-    in_window=predict_para['in_window'],
-    out_window=predict_para['out_window'],
-    max_jitter=0,
-    verbose=predict_para['verbose']
-)
+# valid_data = extract_loci(
+#     sequences=predict_para['sequences'],
+#     signals=predict_para['signals'],
+#     controls=predict_para['controls'],
+#     loci=predict_para['loci'],
+#     chroms=predict_para['chroms'],
+#     in_window=predict_para['in_window'],
+#     out_window=predict_para['out_window'],
+#     max_jitter=0,
+#     verbose=predict_para['verbose']
+# )
 
 if predict_para['controls'] == None:
     X = examples
@@ -55,7 +55,7 @@ if predict_para['controls'] == None:
     else:
         X_ctl = None
 else:
-    X, X_ctl = examples
+    X, X_ctl, valid_data = examples
 
 y_profiles, y_counts = model.predict(X, X_ctl=X_ctl, valid_data=valid_data,
                                       batch_size=predict_para['batch_size'])
