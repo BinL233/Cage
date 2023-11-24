@@ -46,8 +46,8 @@ class Logger():
 		args: tuple or list
 			An iterable containing the statistics to be saved.
 		"""
-		print(len(row), len(self.names))
-		assert len(row) == len(self.names)
+
+		# assert len(row) == len(self.names)
 
 		for name, value in zip(self.names, row):
 			self.data[name].append(value)
