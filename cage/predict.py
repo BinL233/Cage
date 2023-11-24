@@ -49,15 +49,15 @@ examples = extract_loci(
 # )
 
 if predict_para['controls'] == None:
-    X = examples
+    X, valid_sig = examples
     if model.n_control_tracks > 0:
         X_ctl = torch.zeros(X.shape[0], model.n_control_tracks, X.shape[-1])
     else:
         X_ctl = None
 else:
-    X, X_ctl, valid_data = examples
+    X, X_ctl = examples
 
-y_profiles, y_counts = model.predict(X, X_ctl=X_ctl, valid_data=valid_data,
+y_profiles, y_counts = model.predict(X, X_ctl=X_ctl, y_valid=valid_sig,
                                       batch_size=predict_para['batch_size'])
 
 np.savez_compressed(predict_para['profile_filename'], y_profiles)

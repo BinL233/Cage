@@ -206,7 +206,7 @@ class BPNet(torch.nn.Module):
 		return y_profile, y_counts
 
 
-	def predict(self, X, X_ctl=None, valid_data=None, batch_size=64, verbose=False):
+	def predict(self, X, X_ctl=None, y_valid=None, batch_size=64, verbose=False):
 		"""Make predictions for a large number of examples.
 
 		This method will make predictions for a number of examples that exceed
@@ -261,33 +261,34 @@ class BPNet(torch.nn.Module):
 			y_counts = torch.cat(y_counts)
 
 			# Test performance
-			with torch.no_grad():
-				self.eval()
-				
-				z = y_profiles.shape
-				y_profiles = y_profiles.reshape(y_profiles.shape[0], -1)
-				y_profiles = torch.nn.functional.log_softmax(y_profiles, dim=-1)
-				y_profiles = y_profiles.reshape(*z)
-				
-				measures = calculate_performance_measures(y_profiles, 
-				valid_data, y_counts, kernel_sigma=7, 
-				kernel_width=81, measures=['profile_mnll', 
-				'profile_pearson', 'count_pearson', 'count_mse'])
+			self.eval()
+			
+			z = y_profiles.shape
+			y_profiles = y_profiles.reshape(y_profiles.shape[0], -1)
+			y_profiles = torch.nn.functional.log_softmax(y_profiles, dim=-1)
+			y_profiles = y_profiles.reshape(*z)
+			
+			measures = calculate_performance_measures(y_profiles, 
+			y_valid, y_counts, kernel_sigma=7, 
+			kernel_width=81, measures=['profile_mnll', 
+			'profile_pearson', 'count_pearson', 'count_mse'])
 
-				profile_corr = measures['profile_pearson']
-				count_corr = measures['count_pearson']
-				
-				valid_loss = measures['profile_mnll'].mean()
-				valid_loss += self.alpha * measures['count_mse'].mean()
+			profile_corr = measures['profile_pearson']
+			count_corr = measures['count_pearson']
+			
+			valid_loss = measures['profile_mnll'].mean()
+			valid_loss += self.alpha * measures['count_mse'].mean()
+			valid_time = time.time() - tic
 
-				self.logger.add([
-					measures['profile_mnll'].mean().item(), 
-					numpy.nan_to_num(profile_corr).mean(),
-					numpy.nan_to_num(count_corr).mean(), 
-					measures['count_mse'].mean().item(),
-					(valid_loss < best_loss).item()])
+			self.logger.add([ 
+				valid_time,
+				measures['profile_mnll'].mean().item(), 
+				numpy.nan_to_num(profile_corr).mean(),
+				numpy.nan_to_num(count_corr).mean(), 
+				measures['count_mse'].mean().item(),
+				(valid_loss < best_loss).item()])
 
-				self.logger.save("example_test.log")#.format(self.name))
+			self.logger.save("example_test.log")#.format(self.name))
 
 			return y_profiles, y_counts
 
