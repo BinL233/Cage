@@ -47,7 +47,7 @@ class Logger():
 			An iterable containing the statistics to be saved.
 		"""
 
-		# assert len(row) == len(self.names)
+		assert len(row) == len(self.names)
 
 		for name, value in zip(self.names, row):
 			self.data[name].append(value)

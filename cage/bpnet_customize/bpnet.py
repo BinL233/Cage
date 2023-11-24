@@ -152,6 +152,12 @@ class BPNet(torch.nn.Module):
 			"Validation MNLL", "Validation Profile Pearson", 
 			"Validation Count Pearson", "Validation Count MSE", "Saved?"], 
 			verbose=verbose)
+		
+		self.Predlogger = Logger(["Training Time",
+			"Validation Time",
+			"Validation MNLL", "Validation Profile Pearson", 
+			"Validation Count Pearson", "Validation Count MSE", "Saved?"], 
+			verbose=verbose)
 
 
 	def forward(self, X, X_ctl=None):
@@ -280,8 +286,8 @@ class BPNet(torch.nn.Module):
 			valid_loss += self.alpha * measures['count_mse'].mean()
 			valid_time = time.time() - tic
 
-			self.logger.add([ 
-				valid_time,
+			self.Predlogger.add([ 
+				valid_time, valid_time, 
 				measures['profile_mnll'].mean().item(), 
 				numpy.nan_to_num(profile_corr).mean(),
 				numpy.nan_to_num(count_corr).mean(), 
